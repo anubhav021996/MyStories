@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Link from "next/link";
-import { Box, FormLabel, Input, FormControl, Button, Toast } from "@chakra-ui/react";
+import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
 import { Toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -74,16 +74,18 @@ const login = () => {
          theme="light"
          />
 
-        <Box>
+        <Heading textAlign="center" color="teal">Register</Heading>   
+
+        <Box  w={400}  margin="auto" mt={4}>
         <FormControl onSubmit={handleSubmit}>
 
-        <FormLabel>Enter Email</FormLabel>
+        <FormLabel fontSize="20px" mt={3} color="teal">Enter Email</FormLabel>
         <Input type='email' name="email" value={email} onChange={handleChange} />
 
-        <FormLabel>Enter Password</FormLabel>
+        <FormLabel fontSize="20px" mt={3} color="teal">Enter Password</FormLabel>
         <Input type='password' name="password" value={password} onChange={handleChange} />
 
-        <Button type="submit" >Login</Button>
+        <Input type="submit" mt={4} w={100} ml="38%" backgroundColor="teal" color="white" fontSize="20px" borderRadius={10} />
 
         </FormControl>
         </Box>
