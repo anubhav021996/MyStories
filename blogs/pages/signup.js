@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Link from "next/link";
-import { Box, FormLabel, Input, FormControl, Button, Toast } from "@chakra-ui/react";
+import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
 import { Toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,7 +28,7 @@ const signup = () => {
     let data = {name,email,password,age}
 
 let response = await fetch('http://localhost:3000/api/signup', {
-  method: 'POST', // or 'PUT'
+  method: 'POST', 
   headers: {
     'Content-Type': 'application/json',
   },
@@ -53,7 +53,7 @@ let response = await fetch('http://localhost:3000/api/signup', {
         });
  }
 
-    return div(
+    return (
      <>
      <ToastContainer
      position="top-center"
@@ -68,29 +68,32 @@ let response = await fetch('http://localhost:3000/api/signup', {
      theme="light"
      />
 
-     <Box>
+     <Heading textAlign="center" color="teal">Register</Heading>   
+
+     <Box w={400}  margin="auto" mt={4} >
      <FormControl onSubmit={handleSubmit} >
 
-     <FormLabel>Enter Name</FormLabel>
+
+     <FormLabel fontSize="20px" mt={3} color="teal">Enter Name</FormLabel>
      <Input type='text' name="name" value={name} onChange={handleChange} />
 
-     <FormLabel>Enter Email</FormLabel>
+     <FormLabel fontSize="20px" mt={3} color="teal">Enter Email</FormLabel>
      <Input type='email' name="email" value={email} onChange={handleChange} />
 
-     <FormLabel>Enter Password</FormLabel>
+     <FormLabel fontSize="20px" mt={3} color="teal">Enter Password</FormLabel>
      <Input type='password' name="password" value={password} onChange={handleChange} />
 
-     <FormLabel>Enter Age</FormLabel>
+     <FormLabel fontSize="20px" mt={3} color="teal" >Enter Age</FormLabel>
      <Input type='tel' name="age" value={age} onChange={handleChange} />
 
-     <Button type="submit" >Register</Button>
+     <Input type="submit" mt={4} w={100} ml="38%" backgroundColor="teal" color="white" fontSize="20px" borderRadius={10} />
     
      </FormControl>
      </Box>
 
-     <Button>
+     {/* <Button>
         <Link href={"/login"} >Login</Link>
-     </Button>
+     </Button> */}
      </>
     )
 }
