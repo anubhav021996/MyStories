@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Layout token={token} setToken={setToken}>
-        <Component {...pageProps} setToken={setToken}  />
+        <Component {...pageProps} setToken={setToken} token={token} />
       </Layout>
     </ChakraProvider>
   );
