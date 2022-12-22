@@ -3,8 +3,9 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Blog from "../comps/blogCard";
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
+import { Stack, Heading, Spinner } from "@chakra-ui/react";
 
 export const getStaticProps = async () => {
   let res = await fetch("http://localhost:3000/api/blog");
@@ -24,14 +25,25 @@ export default function Home({ data }) {
     }
   }, []);
   if (loading) {
-    return <h1>...Loading</h1>;
+    return (
+      <Spinner
+        display="flex"
+        align="center"
+        justify="center"
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    );
   }
   return (
-    <div className={styles.main}>
-      <h2>Top Stories of the day</h2>
+    <Stack direction="column" gap="10" align="center">
+      <Heading>Top Stories of the day</Heading>
       {data.map((e, i) => (
         <Blog data={e} key={i} />
       ))}
-    </div>
+    </Stack>
   );
 }

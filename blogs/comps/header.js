@@ -1,6 +1,6 @@
 import Link from "next/link";
 import style from "../styles/comps.module.css";
-import { SearchIcon } from "@chakra-ui/icons";
+import { SearchIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Stack,
   Heading,
@@ -20,16 +20,20 @@ const Header = () => {
       top="0"
       padding="0 10px"
       position="sticky"
+      backgroundColor="black"
+      color="white"
     >
-      <Stack direction="row" align="center">
+      <Stack direction="row" align="center" gap="50">
         <Heading>MyStories</Heading>
         <Input
           type="text"
-          placeholder="Search Your Favorite Stories"
+          width="500px"
+          placeholder="Search Your Favorite Stories..."
           className={style.SearchBox}
         />
       </Stack>
       <UnorderedList
+        color="white"
         sx={{
           display: "flex",
           listStyleType: "none",
@@ -42,6 +46,7 @@ const Header = () => {
         <ListItem>
           <Link href="/write" className={style.Link}>
             Write
+            <EditIcon />
           </Link>
         </ListItem>
         <ListItem>
