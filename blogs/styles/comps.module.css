@@ -1,0 +1,49 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 50px;
+  border: 1px solid red;
+  position: sticky;
+  top: 0;
+  align-items: center;
+  font-size: larger;
+}
+.Header div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.Header ul {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+}
+.Footer {
+  display: flex;
+  justify-content: center;
+}
+.SearchBox {
+  padding: 10px 0;
+  width: 300px;
+  border-radius: 15px;
+  background-color: rgb(218, 218, 218);
+  border: none;
+}
+.Link {
+  text-decoration: none;
+  color: black;
+}
+.Blog {
+  height: 300px;
+  width: 600px;
+  border: 1px solid black;
+}
+.Blog ul {
+  display: flex;
+  list-style-type: none;
+  gap: 10px;
+}
+.Blog div {
+  display: flex;
+}
