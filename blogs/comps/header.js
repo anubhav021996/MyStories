@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const Header = () => {
+const Header = ({token}) => {
   return (
     <Stack
       direction="row"
@@ -50,9 +50,12 @@ const Header = () => {
           </Link>
         </ListItem>
         <ListItem>
-          <Link href="/account" className={style.Link}>
+          {token ? <Link href="/account" className={style.Link}>
             Account
-          </Link>
+          </Link> :
+          <Link href="/login" className={style.Link}>
+            Login
+          </Link>}
         </ListItem>
         <ListItem sx={{ visibility: "hidden" }}>
           <HamburgerIcon />

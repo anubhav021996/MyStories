@@ -1,10 +1,10 @@
 import Header from "./header.js";
 import Footer from "./footer.js";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, token}) => {
   return (
     <>
-      <Header />
+      <Header token={token} />
       {children}
       <Footer />
     </>
