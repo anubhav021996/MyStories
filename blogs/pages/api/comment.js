@@ -9,9 +9,17 @@ const commentHandler = async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const comments = await CommentModel.find({ blogId: req.query.id });
+        if (req.query.id) {
+            console.log("here")
+            console.log(req.query.id)
+          const comments = await CommentModel.find({ blogId: req.query.id });
 
-        return res.status(200).send({ comments });
+          return res.status(200).send({ comments });
+        } else {
+          const comments = await CommentModel.find();
+
+          return res.status(200).send({ comments });
+        }
       } catch (error) {
         return res.status(500).send(error);
       }
