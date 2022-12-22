@@ -47,7 +47,7 @@ const write = () => {
         type="text"
         placeholder="Tell your story..."
         h={40}
-        name="description"
+        name="desc"
         onChange={handleChange}
       />
       <FormControl>
