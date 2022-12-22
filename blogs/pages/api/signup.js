@@ -3,6 +3,8 @@ import UserModel from "../../models/User";
 import dbConnect from "../../lib/db";
 
  const handler = async(req,res) =>{
+   await dbConnect()
+    console.log(req.body)
     try {
         if(req.method === "POST"){
             let user = new UserModel(req.body);
@@ -17,4 +19,4 @@ import dbConnect from "../../lib/db";
     }
 }
     
-export default dbConnect(handler)
+export default handler

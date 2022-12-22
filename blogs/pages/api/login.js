@@ -3,9 +3,10 @@ import UserModel from "../../models/User";
 import dbConnect from "../../lib/db";
 
  const handler = async(req,res) =>{
+    await dbConnect();
     try {
         if(req.method === "POST"){
-            let user = UserModel.findOne({"email": req.body.email})
+            let user = await UserModel.findOne({"email": req.body.email})
             if(user){
             if(req.body.email === user.email && req.body.password === user.password){
              res.status(200).json({success:true , message: "User Login Successfully", email:user.email , name:user.name})
@@ -25,4 +26,4 @@ import dbConnect from "../../lib/db";
     }
 }
     
-export default dbConnect(handler)
+export default handler
