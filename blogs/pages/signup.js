@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Link from "next/link";
-import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
+import { Box, FormLabel, Input, FormControl, Button, Heading,Text } from "@chakra-ui/react";
 import "react-toastify/dist/ReactToastify.css";
 
 const signup = () => {
@@ -34,7 +34,7 @@ let response = await fetch('http://localhost:3000/api/signup', {
     return (
      <>
 
-     <Heading textAlign="center" color="teal">Register</Heading>   
+     <Heading textAlign="center" color="teal" mt={5}>Register</Heading>   
 
      <Box w={400}  margin="auto" mt={4} >
       <form onSubmit={handleSubmit} >
@@ -51,12 +51,15 @@ let response = await fetch('http://localhost:3000/api/signup', {
      <FormLabel fontSize="20px" mt={3} color="teal" >Enter Age</FormLabel>
      <Input type='tel' name="age" value={age} onChange={(e) => {setAge(e.target.value)}} />
 
-     <Button type="submit" >Register</Button>
+     <Button type="submit" mt={5} ml="40%" colorScheme="teal" fontSize="20px" borderRadius={10} >Register</Button>
     
  
      </form>
      </Box>
-
+     
+     <Box >
+      <Text textAlign="center" ><span>If you are already a user then</span> <span ><u><Link href={"/login"} >Login</Link></u> </span> </Text>
+     </Box>
      {/* <Button>
         <Link href={"/login"} >Login</Link>
      </Button> */}
