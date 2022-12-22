@@ -45,7 +45,7 @@ const login = () => {
         <FormLabel fontSize="20px" mt={3} color="teal">Enter Password</FormLabel>
         <Input type='password' name="password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
 
-        <Button type="submit">Login</Button>
+        <Button type="submit" mt={5} ml="40%" colorScheme="teal" fontSize="20px" borderRadius={10} >Login</Button>
 
        
         </form>
