@@ -6,6 +6,7 @@ import Blog from "../comps/blogCard";
 // import axios from "axios";
 import { useEffect, useState } from "react";
 import { Stack, Heading, Spinner } from "@chakra-ui/react";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
   let res = await fetch("http://localhost:3000/api/blog");
@@ -42,7 +43,9 @@ export default function Home({ data }) {
     <Stack direction="column" gap="10" align="center">
       <Heading>Top Stories of the day</Heading>
       {data.map((e, i) => (
-        <Blog data={e} key={i} />
+        <Link href={"/blogs/" + e._id} key={i}>
+          <Blog data={e} />
+        </Link>
       ))}
     </Stack>
   );

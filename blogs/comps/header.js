@@ -11,7 +11,7 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { AccountMenu } from "./accountMenu";
 
-const Header = ({token, setToken}) => {
+const Header = ({ token, setToken }) => {
   return (
     <Stack
       direction="row"
@@ -25,7 +25,9 @@ const Header = ({token, setToken}) => {
       color="white"
     >
       <Stack direction="row" align="center" gap="50">
-        <Heading>MyStories</Heading>
+        <Link href="/">
+          <Heading>MyStories</Heading>
+        </Link>
         <Input
           type="text"
           width="500px"
@@ -56,10 +58,13 @@ const Header = ({token, setToken}) => {
           </Link>
         </ListItem>
         <ListItem>
-          {token ? <AccountMenu setToken={setToken} /> :
-          <Link href="/login" className={style.Link}>
-            Login
-          </Link>}
+          {token ? (
+            <AccountMenu setToken={setToken} />
+          ) : (
+            <Link href="/login" className={style.Link}>
+              Login
+            </Link>
+          )}
         </ListItem>
         <ListItem sx={{ visibility: "hidden" }}>
           <HamburgerIcon />
