@@ -7,14 +7,13 @@ export default function App({ Component, pageProps }) {
   const [token,setToken]= useState("");
 
   useEffect(()=>{
-    setToken(JSON.parse(localStorage.getItem("token")) || "");
-    console.log(token);
+    setToken(localStorage.getItem("token") || "");
   },[]);
 
   return (
     <ChakraProvider>
-      <Layout token={token}>
-        <Component {...pageProps} setToken={setToken} />
+      <Layout token={token} setToken={setToken}>
+        <Component {...pageProps} setToken={setToken}  />
       </Layout>
     </ChakraProvider>
   );

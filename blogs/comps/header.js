@@ -9,8 +9,9 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { AccountMenu } from "./accountMenu";
 
-const Header = ({token}) => {
+const Header = ({token, setToken}) => {
   return (
     <Stack
       direction="row"
@@ -39,20 +40,18 @@ const Header = ({token}) => {
           fontWeight: "bold",
         }}
       >
-        <ListItem>
+        {/* <ListItem>
           <Link href="/write" className={style.Link}>
             Write
           </Link>
-        </ListItem>
+        </ListItem> */}
         <ListItem>
           <Link href="/notifications" className={style.Link}>
             🔔
           </Link>
         </ListItem>
         <ListItem>
-          {token ? <Link href="/account" className={style.Link}>
-            Account
-          </Link> :
+          {token ? <AccountMenu setToken={setToken} /> :
           <Link href="/login" className={style.Link}>
             Login
           </Link>}
