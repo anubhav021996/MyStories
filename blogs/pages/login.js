@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
 import "react-toastify/dist/ReactToastify.css";
 
-const login = () => {
+const login = ({setToken}) => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
    
@@ -24,6 +24,7 @@ const login = () => {
     
     localStorage.setItem("email", email)
     localStorage.setItem("token", res.token)
+    setToken(res.token);
 
        setEmail("")
        setPassword("")

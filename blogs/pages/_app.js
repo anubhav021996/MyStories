@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
   const [token,setToken]= useState("");
 
   useEffect(()=>{
-    setToken(JSON.parse(localStorage.getItem("token2")) || "");
+    setToken(JSON.parse(localStorage.getItem("token")) || "");
     console.log(token);
   },[]);
 
