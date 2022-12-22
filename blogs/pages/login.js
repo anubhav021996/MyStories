@@ -21,14 +21,14 @@ const login = () => {
    })
     let res = await response.json();
     console.log(res)
-    localStorage.setItem("email", email)
     
+    localStorage.setItem("email", email)
+    localStorage.setItem("token", res.token)
 
        setEmail("")
        setPassword("")
-   
-
- }
+       
+   }
 
     return(
         <>
