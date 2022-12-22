@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import axios from "axios";
 
-const write = () => {
+const write = ({ token }) => {
   const [data, setData] = useState({});
   const [upload, setUpload] = useState(false);
 
@@ -31,7 +31,13 @@ const write = () => {
   };
 
   const handleSubmit = () => {
-    console.log(data);
+    axios
+      .post("/api/blog", data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+      .then((res) => console.log(res));
   };
 
   return (
