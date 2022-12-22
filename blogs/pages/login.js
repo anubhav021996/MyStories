@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import { useToast } from '@chakra-ui/react'
 
 const login = ({setToken}) => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-   
+    const router = useRouter();
+    const toast = useToast();
    
     const handleSubmit =async (e) => {
        e.preventDefault();
@@ -28,13 +31,25 @@ const login = ({setToken}) => {
 
        setEmail("")
        setPassword("")
+
+       if(res){
+        toast({
+          title: 'Account created.',
+          description: "You have been logged in successfully!!",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          position: "top"
+        })
+        router.push("/")
+       }
        
    }
 
     return(
         <>
 
-        <Heading textAlign="center" color="teal">Register</Heading>   
+        <Heading textAlign="center" color="teal" mt={5}>Login here</Heading>   
 
         <Box  w={400}  margin="auto" mt={4}>
          <form onSubmit={handleSubmit} >
