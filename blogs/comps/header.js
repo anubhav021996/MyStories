@@ -10,8 +10,19 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { AccountMenu } from "./accountMenu";
+import { useState } from "react";
+import SearchResults from "./searchResults";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ token, setToken, setSearchData }) => {
+  const [search, setSearch] = useState();
+  const [data, setData] = useState([]);
+  const handleSearch = async () => {
+    let res = await fetch(`http://localhost:3000/api/blog?q=${search}`);
+    let resData = await res.json();
+    console.log("data", resData);
+    // setData([...resData]);
+    setSearchData([...resData]);
+  };
   return (
     <Stack
       direction="row"
@@ -30,10 +41,16 @@ const Header = ({ token, setToken }) => {
         </Link>
         <Input
           type="text"
+          value={search}
           width="500px"
           placeholder="Search Your Favorite Stories..."
           className={style.SearchBox}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key == "Enter") handleSearch();
+          }}
         />
+        {/* {data.length > 0 && <SearchResults data={data} />} */}
       </Stack>
       <UnorderedList
         color="white"
@@ -46,12 +63,14 @@ const Header = ({ token, setToken }) => {
           fontWeight: "bold",
         }}
       >
-        {/* <ListItem>
-          <Link href="/write" className={style.Link}>
-            Write
-            <EditIcon />
-          </Link>
-        </ListItem> */}
+        {token && (
+          <ListItem>
+            <Link href="/write" className={style.Link}>
+              Write
+              <EditIcon />
+            </Link>
+          </ListItem>
+        )}
         <ListItem>
           <Link href="/notifications" className={style.Link}>
             🔔

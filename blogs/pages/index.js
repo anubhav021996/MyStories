@@ -7,6 +7,7 @@ import Blog from "../comps/blogCard";
 import { useEffect, useState } from "react";
 import { Stack, Heading, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
+import SearchResults from "../comps/searchResults";
 
 export const getStaticProps = async () => {
   let res = await fetch("http://localhost:3000/api/blog");
@@ -20,6 +21,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }) {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (data.length > 0) {
       setLoading(false);
@@ -28,10 +30,9 @@ export default function Home({ data }) {
   if (loading) {
     return (
       <Spinner
-        display="flex"
+        margin="200px 48%"
         align="center"
-        justify="center"
-        thickness="4px"
+        thickness="8px"
         speed="0.65s"
         emptyColor="gray.200"
         color="blue.500"
