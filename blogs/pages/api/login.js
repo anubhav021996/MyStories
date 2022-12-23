@@ -12,12 +12,13 @@ const handler = async (req, res) => {
           req.body.email === user.email &&
           req.body.password === user.password
         ) {
-          console.log("user", user);
+          // console.log("user", user);
           let token = jwt.sign(
             {
               success: true,
               message: "User Login Successfully",
-              user,
+              email: user.email,
+              name: user.name,
             },
             "SECRET1996",
             { expiresIn: "7 days" }

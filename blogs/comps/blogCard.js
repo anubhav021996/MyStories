@@ -13,7 +13,7 @@ const Blog = ({ data }) => {
   return (
     <Stack className={style.Blog} padding="0 10px" justify="space-between">
       <UnorderedList>
-        <ListItem fontWeight="medium">{data.userId.name}</ListItem>
+        <ListItem fontWeight="medium">{data.name}</ListItem>
         <ListItem>{data.date.slice(0, 10)}</ListItem>
       </UnorderedList>
       <Heading as="h6" size="md">

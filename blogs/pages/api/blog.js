@@ -24,9 +24,11 @@ const handler = async (req, res) => {
       let user = await verifyToken(token);
       let obj = {
         ...req.body,
-        userId: user.userId,
+        name: user.name,
+        email: user.email,
       };
-      console.log("user", user);
+      //   console.log("user", user);
+      //   console.log("obj", obj);
       let blog = await Blog.create(obj);
       //   console.log(blog);
       return res.status(201).send(blog);
@@ -36,14 +38,14 @@ const handler = async (req, res) => {
   } else if (req.method === "GET" && req.query.id) {
     try {
       //   console.log(req.query.id);
-      let blog = await Blog.findById(req.query.id).populate("userId");
+      let blog = await Blog.findById(req.query.id);
       return res.status(200).send(blog);
     } catch (error) {
       return res.status(500).send(error);
     }
   } else if (req.method == "GET") {
     try {
-      let blogs = await Blog.find().populate("userId");
+      let blogs = await Blog.find();
       return res.status(200).send(blogs);
     } catch (error) {
       console.log(error);
@@ -53,7 +55,7 @@ const handler = async (req, res) => {
     try {
       let blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
-      }).populate("userId");
+      });
       blog.save();
       return res.status(201).send(blog);
     } catch (error) {
