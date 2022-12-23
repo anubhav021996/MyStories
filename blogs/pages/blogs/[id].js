@@ -36,7 +36,7 @@ const Blog = ({ data }) => {
   return (
     <Stack direction="column" align="center" margin="50px">
       <UnorderedList listStyleType="none">
-        <ListItem fontWeight="medium">Author : {data.userId.name}</ListItem>
+        <ListItem fontWeight="medium">Author : {data.name}</ListItem>
         <ListItem>{data.date.slice(0, 10)}</ListItem>
         <ListItem>{Math.round(Math.random() * 5 + 1)} min read</ListItem>
       </UnorderedList>
