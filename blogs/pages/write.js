@@ -11,7 +11,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const write = ({ token }) => {
+const Write = ({ token }) => {
   const [data, setData] = useState({});
   const [upload, setUpload] = useState(false);
   const router = useRouter();
@@ -81,4 +81,4 @@ const write = ({ token }) => {
   );
 };
 
-export default write;
+export default Write;
