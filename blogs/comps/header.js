@@ -57,11 +57,11 @@ const Header = ({ token, setToken }) => {
             🔔
           </Link>
         </ListItem>
-        <ListItem>
+        <ListItem color="white">
           {token ? (
             <AccountMenu setToken={setToken} />
           ) : (
-            <Link href="/login" className={style.Link}>
+            <Link href="/login" className={style.Link} color="white">
               Login
             </Link>
           )}
