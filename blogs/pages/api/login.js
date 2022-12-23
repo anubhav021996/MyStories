@@ -15,7 +15,6 @@ const handler = async (req, res) => {
           // console.log("user", user);
           let token = jwt.sign(
             {
-              success: true,
               message: "User Login Successfully",
               email: user.email,
               name: user.name,
@@ -26,7 +25,6 @@ const handler = async (req, res) => {
           console.log(token);
           let refreshToken = jwt.sign(
             {
-              success: true,
               message: "User Login Successfully",
               email: user.email,
               name: user.name,
@@ -34,7 +32,7 @@ const handler = async (req, res) => {
             "NEWSECRET1995",
             { expiresIn: "28 days" }
           );
-          res.status(200).json({ token, refreshToken });
+          res.status(200).json({ token, refreshToken, success: true });
         } else {
           res
             .status(400)

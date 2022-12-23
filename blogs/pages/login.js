@@ -1,57 +1,57 @@
-import React, {useState} from "react";
-import { Box, FormLabel, Input, FormControl, Button, Heading, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Box,
+  FormLabel,
+  Input,
+  FormControl,
+  Button,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useToast } from '@chakra-ui/react';
+import { useToast } from "@chakra-ui/react";
 import Link from "next/link";
 
-const login = ({setToken}) => {
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const router = useRouter();
-    const toast = useToast();
-   
-    const handleSubmit =async (e) => {
-       e.preventDefault();
-       let data = {email,password}
-       console.log(data);
-   
-   let response = await fetch('http://localhost:3000/api/login', {
-     method: 'POST', 
-     headers: {
-       'Content-Type': 'application/json',
-     },
-     body: JSON.stringify(data),
-   })
+const login = ({ setToken }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const toast = useToast();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let data = { email, password };
+    console.log(data);
+
+    let response = await fetch(`/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     let res = await response.json();
-    console.log(res)
-    
-    localStorage.setItem("email", email)
-    localStorage.setItem("token", res.token)
+    console.log(res);
+
+    localStorage.setItem("email", email);
+    localStorage.setItem("token", res.token);
     setToken(res.token);
 
-       setEmail("")
-       setPassword("")
+    setEmail("");
+    setPassword("");
 
-       if(res){
-        toast({
-          title: 'Account created.',
-          description: "You have been logged in successfully!!",
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-          position: "top"
-        })
-        router.push("/")
-        
-       }
-       
-        
-      
-       
-   }
-
-
- 
+    if (res) {
+      toast({
+        title: "Account created.",
+        description: "You have been logged in successfully!!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+      router.push("/");
+    }
+  };
 
   return (
     <>
@@ -97,10 +97,17 @@ const login = ({setToken}) => {
           </Button>
         </form>
 
-        <Text textAlign="center" mt={3} ><span>If you are new to website</span> <span><u><Link href={"/signup"} > signup first</Link> </u></span>  </Text>
+        <Text textAlign="center" mt={3}>
+          <span>If you are new to website</span>{" "}
+          <span>
+            <u>
+              <Link href={"/signup"}> signup first</Link>{" "}
+            </u>
+          </span>{" "}
+        </Text>
       </Box>
     </>
   );
 };
 
-export default login
+export default login;

@@ -35,7 +35,7 @@ const write = ({ token }) => {
   const handleSubmit = () => {
     console.log(data, token);
     axios
-      .post("/api/blog", data, {
+      .post(`/api/blog`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },

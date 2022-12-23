@@ -27,25 +27,28 @@ const handler = async (req, res) => {
         name: user.name,
         email: user.email,
       };
-      //   console.log("user", user);
-      //   console.log("obj", obj);
       let blog = await Blog.create(obj);
-      //   console.log(blog);
       return res.status(201).send(blog);
-    } catch (error) {
-      return res.status(500).send(error);
-    }
-  } else if (req.method === "GET" && req.query.id) {
-    try {
-      //   console.log(req.query.id);
-      let blog = await Blog.findById(req.query.id);
-      return res.status(200).send(blog);
     } catch (error) {
       return res.status(500).send(error);
     }
   } else if (req.method == "GET") {
     try {
       let blogs = await Blog.find();
+      if (req.query.id) {
+        let blog = await Blog.findById(req.query.id);
+        return res.status(200).send(blog);
+      }
+      if (req.query.q) {
+        let filtered = blogs.filter((e) => {
+          let t = e.title.toLowerCase();
+          let q = req.query.q.toLowerCase();
+          if (t.includes(q)) {
+            return e;
+          }
+        });
+        res.status(200).send(filtered);
+      }
       return res.status(200).send(blogs);
     } catch (error) {
       console.log(error);
