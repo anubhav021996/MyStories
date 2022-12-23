@@ -11,15 +11,13 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       let blog = await Blog.create(req.body);
-      blog.save();
       return res.status(201).send(blog);
     } catch (error) {
       return res.status(500).send(error);
     }
   } else if (req.method === "GET" && req.query.id) {
     try {
-      console.log(req.query.id);
-      //   console.log(req.params.id);
+      //   console.log(req.query.id);
       let blog = await Blog.findById(req.query.id).populate("userId");
       return res.status(200).send(blog);
     } catch (error) {
