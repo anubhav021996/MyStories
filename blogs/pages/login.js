@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
+import { Box, FormLabel, Input, FormControl, Button, Heading, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react';
+import Link from "next/link";
 
 const login = ({setToken}) => {
     const [email,setEmail] = useState("");
@@ -95,6 +96,8 @@ const login = ({setToken}) => {
             Login
           </Button>
         </form>
+
+        <Text textAlign="center" mt={3} ><span>If you are new to website</span> <span><u><Link href={"/signup"} > signup first</Link> </u></span>  </Text>
       </Box>
     </>
   );
