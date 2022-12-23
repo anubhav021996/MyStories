@@ -5,8 +5,13 @@ import {
   Image,
   UnorderedList,
   ListItem,
+  Input,
+  Textarea,
+  Button,
+  Box,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
 
 export const getStaticPaths = async () => {
   let res = await fetch("http://localhost:3000/api/blog");
@@ -33,7 +38,19 @@ export const getStaticProps = async (context) => {
 };
 
 const Blog = ({ data }) => {
+const [value , setValue] = useState();
+const [valueList , setValuelist] = useState([]);
+
+const handleClick =(e) => {
+if(value !== "" && valueList !== ""){
+  setValuelist([...valueList , value])
+}
+}
+
+
+
   return (
+    <>
     <Stack direction="column" align="center" margin="50px">
       <UnorderedList listStyleType="none">
         <ListItem fontWeight="medium">Author : {data.name}</ListItem>
@@ -52,7 +69,24 @@ const Blog = ({ data }) => {
         {data.topic}
       </Heading>
       <Text>{data.desc}</Text>
+        
+
     </Stack>
+    <Box>
+    <Text ml={60} fontSize="20px" mb={5} >Comment here</Text>
+    <Textarea w="70%" m="auto" display="block" value={value} onChange={(e) => {setValue(e.target.value)}} ></Textarea>
+    <Button ml="81%" mt={2} onClick={handleClick} >Post</Button>
+    </Box>
+    <Box textAlign="center" width="max-content" ml={60} fontSize="2 0px" >
+    <ol  >
+      {
+        valueList.map((el) => {
+          return <li >{el}</li>
+        })
+      }
+    </ol>
+    </Box>
+    </>
   );
 };
 
