@@ -37,7 +37,7 @@ let response = await fetch('http://localhost:3000/api/signup', {
          title: 'Account created.',
          description: "You account has been created successfully",
          status: 'success',
-         duration: 9000,
+         duration: 4000,
          isClosable: true,
          position: "top"
        })

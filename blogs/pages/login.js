@@ -1,7 +1,5 @@
-
 import React, {useState} from "react";
 import { Box, FormLabel, Input, FormControl, Button, Heading } from "@chakra-ui/react";
-import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useToast } from '@chakra-ui/react'
 
@@ -38,57 +36,21 @@ const login = ({setToken}) => {
           title: 'Account created.',
           description: "You have been logged in successfully!!",
           status: 'success',
-          duration: 9000,
+          duration: 4000,
           isClosable: true,
           position: "top"
         })
         router.push("/")
+        
        }
+       
+        
+      
        
    }
 
-import React, { useState } from "react";
-import {
-  Box,
-  FormLabel,
-  Input,
-  FormControl,
-  Button,
-  Heading,
-} from "@chakra-ui/react";
-// import "react-toastify/dist/ReactToastify.css";
 
-const login = ({ setToken }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let data = { email, password };
-    console.log(data);
-
-
-        <Heading textAlign="center" color="teal" mt={5}>Login here</Heading>   
-
-    let response = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    let res = await response.json();
-    console.log(res);
-
-    localStorage.setItem("email", email);
-    localStorage.setItem("token", res.token);
-    setToken(res.token);
  
-
-    setEmail("");
-    setPassword("");
-  };
 
   return (
     <>
@@ -138,4 +100,4 @@ const login = ({ setToken }) => {
   );
 };
 
-export default login;
+export default login
