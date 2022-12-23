@@ -1,5 +1,15 @@
 import Blog from "../../models/Blog";
 import dbConnect from "../../lib/db.js";
+const jwt = require("jsonwebtoken");
+
+const verifyToken = (token) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, "SECRET1996", (err, user) => {
+      if (err) return reject(err);
+      resolve(user);
+    });
+  });
+};
 
 const handler = async (req, res) => {
   try {
@@ -10,7 +20,15 @@ const handler = async (req, res) => {
   }
   if (req.method === "POST") {
     try {
-      let blog = await Blog.create(req.body);
+      let token = req.headers.authorization.split(" ")[1];
+      let user = await verifyToken(token);
+      let obj = {
+        ...req.body,
+        userId: user.userId,
+      };
+      console.log("user", user);
+      let blog = await Blog.create(obj);
+      //   console.log(blog);
       return res.status(201).send(blog);
     } catch (error) {
       return res.status(500).send(error);

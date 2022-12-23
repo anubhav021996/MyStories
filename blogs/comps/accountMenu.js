@@ -28,20 +28,22 @@ export const AccountMenu = ({ setToken }) => {
         minW={0}
         fontSize="25px"
         fontWeight="bold"
-        color="black"
+        color="white"
         textDecoration="none"
       >
         Account
       </MenuButton>
-      <MenuList>
+      <MenuList backgroundColor="gray">
         <Link href="/write">
-          <MenuItem>Write a story</MenuItem>
+          <MenuItem backgroundColor="gray">Write a story</MenuItem>
         </Link>
         <Link href="/">
-          <MenuItem>Stories</MenuItem>
+          <MenuItem backgroundColor="gray">Stories</MenuItem>
         </Link>
         <MenuDivider />
-        <MenuItem onClick={logout}>Sign out</MenuItem>
+        <MenuItem onClick={logout} backgroundColor="gray">
+          Sign out
+        </MenuItem>
       </MenuList>
     </Menu>
   );

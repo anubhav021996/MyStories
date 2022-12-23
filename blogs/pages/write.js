@@ -9,10 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const write = ({ token }) => {
   const [data, setData] = useState({});
   const [upload, setUpload] = useState(false);
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { value, name, files, type } = e.target;
@@ -31,13 +33,14 @@ const write = ({ token }) => {
   };
 
   const handleSubmit = () => {
+    console.log(data, token);
     axios
       .post("/api/blog", data, {
         headers: {
           Authorization: "Bearer " + token,
         },
       })
-      .then((res) => console.log(res));
+      .then((res) => router.push("/blogs/" + res.data._id));
   };
 
   return (
