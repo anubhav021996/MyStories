@@ -87,7 +87,7 @@ const Blog = ({ data }) => {
       </Box>
       <Box textAlign="center" width="max-content" ml={60} fontSize="2 0px">
         <ol>
-          {valueList.map((el,i) => {
+          {valueList.map((el, i) => {
             return <li key={i}>{el}</li>;
           })}
         </ol>

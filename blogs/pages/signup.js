@@ -12,6 +12,7 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -26,14 +27,16 @@ const Signup = () => {
     let data = { name, email, password, age };
     console.log(data);
 
-    let response = await fetch(`/api/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    let res = await response.json();
+    let res = await axios.post(`/api/signup`, data);
+
+    // let response = await fetch(`/api/signup`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    // let res = await response.json();
     console.log(res);
     setName("");
     setEmail("");

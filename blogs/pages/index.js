@@ -10,10 +10,9 @@ import Link from "next/link";
 import SearchResults from "../comps/searchResults";
 
 export const getStaticProps = async () => {
-  let res = await fetch(`${process.env.BASE_FETCH_URL}/api/blog`);
-  let data = await res.json();
+  let { data } = await axios.get(`${process.env.BASE_FETCH_URL}/api/blog`);
   return {
-    props: { data: data },
+    props: { data },
   };
 };
 
@@ -21,12 +20,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }) {
   const [loading, setLoading] = useState(true);
+  console.log("data", data);
 
   useEffect(() => {
     if (data.length > 0) {
       setLoading(false);
     }
-  }, []);
+  }, [data.length]);
   if (loading) {
     return (
       <Spinner
