@@ -16,7 +16,7 @@ Some of the images of or app are:-
 ![Screenshot (4)](https://user-images.githubusercontent.com/103635044/209325136-8d08e979-d60f-4e73-b8d0-864dc4e38821.png)
 ![Screenshot (5)](https://user-images.githubusercontent.com/103635044/209325140-6ad59598-7964-469a-9570-7f3f5766c4db.png)
 
-Tech-Stack 👎
+Tech-Stack:-
 1.Nextjs
 2.Socket.io
 3.MongoDb
