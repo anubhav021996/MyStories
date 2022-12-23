@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
 
-const signup = () => {
+const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -136,4 +136,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

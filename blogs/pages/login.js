@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
 import Link from "next/link";
 
-const login = ({ setToken }) => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -110,4 +110,4 @@ const login = ({ setToken }) => {
   );
 };
 
-export default login;
+export default Login;
