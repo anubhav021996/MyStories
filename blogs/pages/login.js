@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
 import Link from "next/link";
+import axios from "axios";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
@@ -23,24 +24,26 @@ const Login = ({ setToken }) => {
     let data = { email, password };
     console.log(data);
 
-    let response = await fetch(`/api/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    let res = await response.json();
-    console.log(res);
+    let response = await axios.post(`/api/login`, data);
+
+    // let response = await fetch(`/api/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    // let res = await response.json();
+    console.log(response);
 
     localStorage.setItem("email", email);
-    localStorage.setItem("token", res.token);
-    setToken(res.token);
+    localStorage.setItem("token", response.data.token);
+    setToken(response.data.token);
 
     setEmail("");
     setPassword("");
 
-    if (res) {
+    if (response) {
       toast({
         title: "Account created.",
         description: "You have been logged in successfully!!",
