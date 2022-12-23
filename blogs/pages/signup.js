@@ -2,13 +2,16 @@ import React, {useState} from "react";
 import Link from "next/link";
 import { Box, FormLabel, Input, FormControl, Button, Heading,Text } from "@chakra-ui/react";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import { useToast } from '@chakra-ui/react'
 
 const signup = () => {
  const [name,setName] = useState("");
  const [email,setEmail] = useState("");
  const [password,setPassword] = useState("");
  const [age,setAge] = useState("");
-
+ const router = useRouter();
+ const toast = useToast();
 
  const handleSubmit =async (e) => {
     e.preventDefault();
@@ -29,7 +32,20 @@ let response = await fetch('http://localhost:3000/api/signup', {
     setPassword("")
     setAge("")
 
+    if(res){
+      toast({
+         title: 'Account created.',
+         description: "You account has been created successfully",
+         status: 'success',
+         duration: 4000,
+         isClosable: true,
+         position: "top"
+       })
+      router.push("/login")
+    }
+
  }
+ 
 
     return (
      <>
@@ -60,9 +76,6 @@ let response = await fetch('http://localhost:3000/api/signup', {
      <Box >
       <Text textAlign="center" ><span>If you are already a user then</span> <span ><u><Link href={"/login"} >Login</Link></u> </span> </Text>
      </Box>
-     {/* <Button>
-        <Link href={"/login"} >Login</Link>
-     </Button> */}
      </>
     )
 }
