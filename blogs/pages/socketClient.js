@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import io from "Socket.IO-client";
 let socket;
 
-const socketClient = () => {
+const SocketClient = () => {
   useEffect(() => {
     socketInitializer();
   }, []);
@@ -19,4 +19,4 @@ const socketClient = () => {
   return null;
 };
 
-export default socketClient;
+export default SocketClient;

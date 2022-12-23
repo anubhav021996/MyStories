@@ -26,7 +26,7 @@ export default function Home({ data }) {
     if (data.length > 0) {
       setLoading(false);
     }
-  }, []);
+  }, [data.length]);
   if (loading) {
     return (
       <Spinner
