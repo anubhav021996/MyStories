@@ -3,14 +3,14 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Blog from "../comps/blogCard";
-// import axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Stack, Heading, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import SearchResults from "../comps/searchResults";
 
 export const getStaticProps = async () => {
-  let res = await fetch("http://localhost:3000/api/blog");
+  let res = await fetch(`${process.env.BASE_FETCH_URL}/api/blog`);
   let data = await res.json();
   return {
     props: { data: data },

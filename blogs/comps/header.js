@@ -17,7 +17,7 @@ const Header = ({ token, setToken, setSearchData }) => {
   const [search, setSearch] = useState();
   const [data, setData] = useState([]);
   const handleSearch = async () => {
-    let res = await fetch(`http://localhost:3000/api/blog?q=${search}`);
+    let res = await fetch(`/api/blog?q=${search}`);
     let resData = await res.json();
     console.log("data", resData);
     // setData([...resData]);

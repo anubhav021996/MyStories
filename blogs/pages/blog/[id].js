@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/comment");
+  const res = await fetch(`/api/comment`);
   const data = await res.json();
 
   const paths = data.map((el) => {
@@ -16,7 +16,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(`http://localhost:3000/api/comment?id=${id}`);
+  const res = await fetch(`${process.env.BASE_FETCH_URL}/api/comment?id=${id}`);
   const data = res.json();
   return {
     props: { ninja: data },
