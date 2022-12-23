@@ -55,7 +55,7 @@ const login = ({setToken}) => {
   return (
     <>
       <Heading textAlign="center" color="teal">
-        Register
+        Login here
       </Heading>
 
       <Box w={400} margin="auto" mt={4}>
